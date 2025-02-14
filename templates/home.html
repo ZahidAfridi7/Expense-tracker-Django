@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+
+    <!-- Form to Add an Expense -->
+    <form method="POST" action="{% url 'add_expense' %}">
+        {% csrf_token %}
+        <label>Amount:</label>
+        <input type="number" name="amount" required><br><br>
+
+        <label>Category:</label>
+        <select name="category">
+            <option value="food">Food</option>
+            <option value="transport">Transport</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="bills">Bills</option>
+            <option value="other">Other</option>
+        </select><br><br>
+
+        <label>Date:</label>
+        <input type="datetime-local" name="date" required><br><br>
+
+        <label>Description:</label>
+        <textarea name="description" required></textarea><br><br>
+
+        <button type="submit">Add Expense</button>
+    </form>
+
+</body>
+</html>
